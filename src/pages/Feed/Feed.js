@@ -136,20 +136,23 @@ class Feed extends Component {
 
     let graphqlQuery = {
       query: `
-      createPost(postInput: {title: "${postData.title}", content: "${postData.content}", imageUrl: "some url"}) {
-        _id
-        title
-        content
-        imageUrl
-        creator {
-          name
+      mutation {
+        createPost(postInput: {title: "${postData.title}", content: "${postData.content}", imageUrl: "some url"}) {
+          _id
+          title
+          content
+          imageUrl
+          creator {
+            name
+          }
+          createdAt
         }
-        creatorAt
       }
+      
       `
     };
 
-    fetch("http://localhost:8080/graphql", {
+    fetch('http://localhost:8080/graphql', {
       method: "POST",
       body: JSON.stringify(graphqlQuery),
       headers: {
