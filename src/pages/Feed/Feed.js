@@ -56,7 +56,8 @@ class Feed extends Component {
     }
     fetch("http://localhost:8080/feed/posts?page= " + page, {
       headers: {
-        Authorization: "Bearer " + this.props.token
+        Authorization: "Bearer " + this.props.token,
+
       }
     })
       .then(res => {
@@ -152,7 +153,8 @@ class Feed extends Component {
       method: "POST",
       body: JSON.stringify(graphqlQuery),
       headers: {
-        Authorization: "Bearer " + this.props.token
+        Authorization: "Bearer " + this.props.token,
+        'Content-Type': 'application/json'
       }
     })
       .then(res => {
