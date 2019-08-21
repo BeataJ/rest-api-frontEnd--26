@@ -279,26 +279,25 @@ class Feed extends Component {
     this.setState({ postsLoading: true });
     const graphqlQuery = {
       query: `
-        mutation: {
+        mutation {
           deletePost(id: "${postId}")
         }
       `
-    }
-    fetch("http://localhost:8080/qraphql" , {
-      method: "POST",
+    };
+    fetch('http://localhost:8080/graphql', {
+      method: 'POST',
       headers: {
-        Authorization: "Bearer " + this.props.token,
+        Authorization: 'Bearer ' + this.props.token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(graphqlQuery)
     })
       .then(res => {
-
         return res.json();
       })
       .then(resData => {
         if (resData.errors) {
-          throw new Error("Deleting the post failed!");
+          throw new Error('Deleting the post failed!');
         }
         console.log(resData);
         this.loadPosts();
