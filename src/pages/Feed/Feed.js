@@ -198,7 +198,7 @@ class Feed extends Component {
         let graphqlQuery = {
           query: `
           mutation CreateNewPost($title: String!, $content: String!, $imageUrl: String!) {
-            createPost(postInput: {title: $title, content: $content, imageUrl: $imageUrl) {
+            createPost(postInput: {title: $title, content: $content, imageUrl: $imageUrl}) {
               _id
               title
               content
@@ -209,7 +209,7 @@ class Feed extends Component {
               createdAt
             }
           }
-          `,
+        `,
           variables: {
             title: postData.title,
             content: postData.content,
