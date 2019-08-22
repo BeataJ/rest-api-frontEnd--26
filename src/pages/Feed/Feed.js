@@ -194,7 +194,7 @@ class Feed extends Component {
     })
       .then(res => res.json())
       .then(fileResData => {
-        const imageUrl = fileResData.filePath;
+        const imageUrl = fileResData.filePath || "undefined";
         let graphqlQuery = {
           query: `
           mutation CreateNewPost($title: String!, $content: String!, $imageUrl: String!) {
